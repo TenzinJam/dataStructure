@@ -112,14 +112,22 @@ class SinglyLinkedList{
   }
 
   remove(idx){
-    if(idx === )
+    if(idx === 0) return this.shift()
+    if (idx === this.length - 1) return this.pop()
     let oneBeforeRemoved = this.get(idx-1)
     let removed = oneBeforeRemoved.next
-    if(removed)
+    let next = removed.next
+
+    if(removed){
+        oneBeforeRemoved.next = next
+        removed.next = null
+      }
+    this.length--
+    return removed
   }
 
   reverse(){
-
+    
   }
 }
 
@@ -136,4 +144,5 @@ print(list)
 // print("added:",list.unshift(8))
 
 // print(list.get(2))
-print(list.insert(0, "hello"))
+print("removed Node:", list.remove(2))
+print("new Node:", list.head.next.next)

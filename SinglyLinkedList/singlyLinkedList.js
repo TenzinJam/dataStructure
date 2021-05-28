@@ -24,9 +24,18 @@ class SinglyLinkedList{
   }
 
   pop(){
-    
-  }
+    if(!this.head) return undefined
+    if(this.head === this.tail) return null
 
+    let current = this.head
+    let newTail
+    while(current.next) newTail = current, current = current.next
+
+    this.tail = newTail
+    this.tail.next = null
+    this.length--
+    return current.val
+  }
 }
 
 let list = new SinglyLinkedList()
@@ -34,4 +43,7 @@ list.push(5)
 list.push(10)
 list.push(20)
 list.push(-1)
+console.log(list)
+console.log(list.pop())
+console.log(list.pop())
 console.log(list)

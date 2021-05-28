@@ -23,17 +23,25 @@ class SinglyLinkedList{
     return this
   }
 
+  // pop is a little tricky because there are a few edge cases that you can only discern by testing the methods. So be sure to test those
+  
   pop(){
     if(!this.head) return undefined
-    if(this.head === this.tail) return null
-
+    // if(this.head === this.tail) {
+    //   let popped = this.head
+    //   this.head = null
+    //   this.tail = null
+    //   this.length--
+    //   return popped.val
+    // }
     let current = this.head
-    let newTail
+    let newTail = current
     while(current.next) newTail = current, current = current.next
 
     this.tail = newTail
     this.tail.next = null
     this.length--
+    if(this.length === 0) this.head = null, this.tail = null
     return current.val
   }
 }
@@ -44,6 +52,8 @@ list.push(10)
 list.push(20)
 list.push(-1)
 console.log(list)
+console.log(list.pop())
+console.log(list.pop())
 console.log(list.pop())
 console.log(list.pop())
 console.log(list)

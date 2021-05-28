@@ -69,18 +69,28 @@ class SinglyLinkedList{
     return this
   }
 
-  // It might be tempting
+  // Since we are only accessing a node and not adding or deleting anything, we do not have to worry about rearranging the head, tail, and next properties. Just find the node and return the value of that node.
   get(idx){
-    if(!this.head) return "list is empty"
-    if(idx < 0 || idx >= this.length) return `${idx} is an invalid index`
+    if(!this.head) return null
+    if(idx < 0 || idx >= this.length) return null
 
     let counter = 0
     let current = this.head
     while(counter < this.length){
-      if(counter === idx) return current.val
+      if(counter === idx) return current
       current = current.next
       counter++
     }
+  }
+//line 87, I don't need to worry about because the get method already has this conditional and we do not need to repeat it here.
+  set(idx, val){
+    //if(idx < 0 || idx >= this.length) return `${idx} is an invalid index`
+    let current= this.get(idx)
+    if(current){
+      current.val = val
+      return this
+    }
+    return `${idx} is an invalid index`
   }
 }
 
@@ -96,4 +106,5 @@ print(list)
 // print("added:",list.unshift(6))
 // print("added:",list.unshift(8))
 
-print(list.get(2))
+// print(list.get(2))
+print(list.set(5, "hello"))

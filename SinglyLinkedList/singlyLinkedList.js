@@ -127,7 +127,12 @@ class SinglyLinkedList{
   }
 
   reverse(){
-    
+    [this.tail, this.tail] = [this.head, this.tail]
+
+    while(){
+      
+    }
+
   }
 }
 

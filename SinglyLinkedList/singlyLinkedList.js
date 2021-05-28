@@ -83,6 +83,7 @@ class SinglyLinkedList{
     }
   }
 //line 87, I don't need to worry about because the get method already has this conditional and we do not need to repeat it here.
+//Only thing you need to worry about is what you are returning from the get method. If you are returning the value and not the node, and you are trying to set the argument value as the new value for that node, it does not work. We need to get the node from the get method and then set the value in the set method.
   set(idx, val){
     //if(idx < 0 || idx >= this.length) return `${idx} is an invalid index`
     let current= this.get(idx)
@@ -91,6 +92,34 @@ class SinglyLinkedList{
       return this
     }
     return `${idx} is an invalid index`
+  }
+
+  //control flow for this one was a bit of an issue. First three were if conditions followed by one else statement. I had to add else to the 2nd nd the 3rd if statements.
+  insert(idx, val){
+    let newNode = new Node(val)
+    if(idx < 0 || idx > this.length) return null
+    else if(idx === 0) this.unshift(val)
+    else if(idx === this.length) this.push(val)
+
+    else {
+      let previous = this.get(idx-1)
+      let next = previous.next
+      previous.next = newNode
+      newNode.next = next
+      this.length++
+    }
+    return this
+  }
+
+  remove(idx){
+    if(idx === )
+    let oneBeforeRemoved = this.get(idx-1)
+    let removed = oneBeforeRemoved.next
+    if(removed)
+  }
+
+  reverse(){
+
   }
 }
 
@@ -107,4 +136,4 @@ print(list)
 // print("added:",list.unshift(8))
 
 // print(list.get(2))
-print(list.set(5, "hello"))
+print(list.insert(0, "hello"))

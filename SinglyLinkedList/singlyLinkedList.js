@@ -134,11 +134,15 @@ class SinglyLinkedList{
     while(current !== null){
       print("loop")
       if(current === this.head) this.tail = current
-      if(next === null) this.head = next
+      if(next === null) {
+        this.head = current
+        current.next = previous
+        break
+      }
       current.next = previous
       previous = current
       current = next
-      next? next.next : null
+      next = next.next
     }
     return this
   }

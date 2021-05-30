@@ -127,12 +127,20 @@ class SinglyLinkedList{
   }
 
   reverse(){
-    [this.tail, this.tail] = [this.head, this.tail]
-
-    while(){
-      
+    let previous = null
+    let current = this.head, next = current.next
+    if(!this.length) return undefined
+    if(this.length === 1) return this
+    while(current !== null){
+      print("loop")
+      if(current === this.head) this.tail = current
+      if(next === null) this.head = next
+      current.next = previous
+      previous = current
+      current = next
+      next? next.next : null
     }
-
+    return this
   }
 }
 
@@ -149,5 +157,4 @@ print(list)
 // print("added:",list.unshift(8))
 
 // print(list.get(2))
-print("removed Node:", list.remove(2))
-print("new Node:", list.head.next.next)
+print("reverse:", list.reverse())

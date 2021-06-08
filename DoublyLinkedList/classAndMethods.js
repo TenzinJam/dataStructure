@@ -3,8 +3,8 @@ const print = console.log
 class Node{
   constructor(val){
     this.val = val
-    this.prev = null
     this.next = null
+    this.prev = null
   }
 }
 
@@ -17,9 +17,9 @@ class DoublyLinkedList{
 
   push(val){
     let newNode = new Node(val)
-    if(!this.length) {
+    if(!this.head) {
       this.head = newNode
-      this.tail = this.head
+      this.tail = newNode
     }
     else{
       this.tail.next = newNode
@@ -46,7 +46,61 @@ class DoublyLinkedList{
     return this
   }
 
+  shift(){
+    let shifted = this.head
+    if(!this.length) return undefined
+    if(this.length === 1){
+      this.head = null
+      this.tail = null
+      this.length--
+      return shifted
+    }
+    this.head = shifted.next
+    this.head.prev = null
+    shifted.next = null
+    this.length--
+    return shifted
 
+  }
+
+  unshift(val){
+    let newNode = new Node(val)
+    if(!this.length){
+      this.head = newNode
+      this.tail = this.head
+      this.length++
+      return this
+    }
+    newNode.next = this.head
+    this.head.prev = newNode
+    this.head = newNode
+    this.length++
+    return this
+  }
+
+  get(idx){
+    if(idx < 0 || idx > this.length - 1) return undefined
+
+    if(idx >= Math.floor(this.length/2)){
+      let current = this.tail
+      for(let i = this.length-1; i >= Math.floor(this.length/2); i--){
+        if(i === idx) return current.val
+        current = current.prev
+      }
+    }
+
+    else{
+      let current = this.head
+      for(let i = 0; i <= Math.floor(this.length/2); i++){
+        if(i === idx) return current.val
+        current = current.next
+      }
+    }
+  }
+
+  set(idx, val){
+    
+  }
 
 }
 
@@ -56,8 +110,6 @@ list.push(15)
 list.push(6)
 list.push(9)
 list.push(100)
-
 print(list)
+print(list.get(2.5))
 
-print(list.pop())
-print(list)

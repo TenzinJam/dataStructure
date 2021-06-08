@@ -114,7 +114,6 @@ class DoublyLinkedList{
     if(idx === this.length) return this.push(val)
     if(!this.length) this.head = newNode, this.tail = newNode
     else{
-      console.log("hello")
       let nodeInIdx = this.get(idx)[0]
       let previous = nodeInIdx.prev
       previous.next = newNode

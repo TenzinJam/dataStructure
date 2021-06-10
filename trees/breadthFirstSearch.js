@@ -50,30 +50,11 @@ class BinarySearchTree{
     let finalArr = []
     while(queue[0]){
       finalArr.push(queue[0].val)
-      // console.log(queue)
       if(queue[0].left) queue.push(queue[0].left)
       if(queue[0].right) queue.push(queue[0].right)
       queue.shift()
     }
     return finalArr
-  }
-
-  depthFirstSearchInOrder(){
-
-  }
-
-  depthFirstSearchPreOrder(this, array=[]){
-    let current = this.root
-    if(!current) return
-
-    array.push(current.val)
-    this.depthFirstSearchPreOrder(current.left, array)
-    this.depthFirstSearchPreOrder(current.right, array)
-    return array
-  }
-  
-  depthFirstSearchPostOrder(){
-
   }
 
 }

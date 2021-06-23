@@ -1,5 +1,5 @@
 
-let graph = [something]
+let graph = {something}
 
 function dfsRecursive(vertex){
   if(vertex===null) return
@@ -7,9 +7,9 @@ function dfsRecursive(vertex){
   let visited = { }
   function helper(vertex){
     if(vertex===null) return
-    visited.push(vertex)
+    visited[vertex]= true
     result.push(vertex)
-    for(let node in graph.adjacencyList(vertex)){
+    for(let node of graph.adjacencyList(vertex)){
       if(!visited[node]){
         helper(node)
       }

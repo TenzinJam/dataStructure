@@ -1,15 +1,17 @@
+const graph = require('./graph')
 
-let graph = {something}
+let print = console.log
 
-function dfsRecursive(vertex){
+graph.dfsRecursive = function (vertex){
   if(vertex===null) return
   let result = []
   let visited = { }
+  let adjacencyList = this.adjacencyList
   function helper(vertex){
-    if(vertex===null) return
+    if(vertex===null) return null
     visited[vertex]= true
     result.push(vertex)
-    for(let node of graph.adjacencyList(vertex)){
+    for(let node of adjacencyList[vertex]){
       if(!visited[node]){
         helper(node)
       }
@@ -18,3 +20,5 @@ function dfsRecursive(vertex){
   helper(vertex)
   return result
 }
+
+print(graph.dfsRecursive("A"))

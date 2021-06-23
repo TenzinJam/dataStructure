@@ -33,10 +33,19 @@ class Graph{
 }
 
 let graph = new Graph()
-graph.addVertex(5)
-graph.addVertex(10)
-graph.addVertex(30)
-graph.addVertex(1)
-graph.addEdge(1,5)
-print(graph)
-console.log(graph.removeVertex(1))
+graph.addVertex("A")
+graph.addVertex("B")
+graph.addVertex("C")
+graph.addVertex("D")
+graph.addVertex("E")
+graph.addVertex("F")
+
+graph.addEdge("A","B")
+graph.addEdge("A", "C")
+graph.addEdge("B","D")
+graph.addEdge("C", "E")
+graph.addEdge("D","E")
+graph.addEdge("D", "F")
+graph.addEdge("E", "F")
+
+module.exports = graph

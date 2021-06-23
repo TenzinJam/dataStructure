@@ -1,16 +1,23 @@
-let graph = { something }
+const graph = require('./graph')
+let print = console.log
 
-function graphBfs(vertex){
-  let queue = []
+graph.graphBfs = function(vertex){
+  let queue = [vertex]
   let result = []
-  let visited = {vertex: true}
+  let visited = {}
+  visited[vertex] = true
+  let current
   while(queue.length){
-    result.push(queue.shift(vertex))
-    for(let node of graph.adjacencyList[vertex]){
-      if(!visited[node])
-      visited[node] = true
-      queue.push(node)
+    current = queue.shift()
+    result.push(current)
+    for(let node of this.adjacencyList[current]){
+      if(!visited[node]) {
+        visited[node] = true
+         queue.push(node)
+      }
     }
   }
   return result
 }
+
+print(graph.graphBfs("A"))
